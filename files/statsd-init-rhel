@@ -14,8 +14,11 @@ lockfile=/var/lock/subsys/statsd
 RETVAL=0
 STOP_TIMEOUT=${STOP_TIMEOUT-10}
 
-# Read configuration variable file if it is present
+# Read default variables file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
+
+# Read sysconfig variables file if it is present
+[ -r /etc/sysconfig/$NAME ] && . /etc/sysconfig/$NAME
 
 # Determine if we can use the -p option to daemon, killproc, and status.
 # RHEL < 5 can't.
